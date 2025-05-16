@@ -4,7 +4,7 @@ Um clone simples e funcional do famoso jogo 2048.
 
 ## 📷 Preview
 
-<img src="assets/images/Preview2048.gif" alt="Preview 2048" width="910"/>
+<img src="assets/images/Preview2048.gif" alt="Preview 2048" width="510"/>
 
 ## 🚀 Funcionalidades
 
