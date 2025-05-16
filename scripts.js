@@ -204,3 +204,8 @@ function slideDown() {
     }
   }
 }
+
+// Alternância de tema claro/escuro
+document.getElementById("toggle-theme").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
