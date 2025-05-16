@@ -117,20 +117,24 @@ hr {
   color: rgb(255, 255, 255);
 }
 
+/* Tema Dark no corpo do documento */
 body.dark-mode {
   background-color: #121212;
   color: #ffffff;
 }
 
+/* Tema Dark no tabuleiro */
 body.dark-mode #board {
   background-color: #1e1e1e;
   border-color: #555;
 }
 
+/* Tema Dark nos blocos */
 body.dark-mode .tile {
   border-color: #555;
 }
 
+/* Botão de alternar entre tema Claro e Dark */
 #toggle-theme {
   margin: 20px;
   padding: 10px 25px;
@@ -142,6 +146,7 @@ body.dark-mode .tile {
   cursor: pointer;
 }
 
+/* Efeito de transição para o botão */
 #toggle-theme:hover {
   background-color: #dddddd;
   color: #000;

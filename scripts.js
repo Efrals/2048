@@ -34,14 +34,16 @@ function setGame() {
     }
   }
 
-  // Qauntidade de tiles que serão criados inicialmente
+  // Quantidade de tiles que serão criados inicialmente
   setTwo();
   setTwo();
 }
 
-// Função que verifica se existe algum tile vazio (com valor 0) no tabuleiro
+// Verifica se existe algum tile vazio (com valor 0) no tabuleiro
 function hasEmptyTile() {
+  // Percorre cada linha do tabuleiro
   for (let r = 0; r < rows; r++) {
+    // Percorre cada coluna para criar os tiles
     for (let c = 0; c < columns; c++) {
       if (board[r][c] == 0) {
         return true;
@@ -51,6 +53,7 @@ function hasEmptyTile() {
   return false;
 }
 
+// Gera um novo tile com valor 2 em uma posição aleatória vazia
 function setTwo() {
   if (!hasEmptyTile()) {
     return;
@@ -89,6 +92,7 @@ function updateTile(tile, num) {
   }
 }
 
+// Captura eventos de tecla para mover os tiles nas 4 direções
 document.addEventListener("keyup", (e) => {
   if (e.code == "ArrowLeft") {
     slideLeft();
@@ -112,10 +116,12 @@ document.addEventListener("keyup", (e) => {
   document.getElementById("score").innerText = score;
 });
 
+// Remove todos os zeros de uma linha para facilitar a fusão
 function filterZero(row) {
   return row.filter((num) => num != 0); // Cria um novo array sem zeros
 }
 
+// Aplica lógica de fusão e movimentação para uma linha
 function slide(row) {
   // [0, 2, 2, 2]
   row = filterZero(row); // [2, 2, 2]
@@ -139,21 +145,27 @@ function slide(row) {
   return row;
 }
 
+// Aplica movimento para a esquerda no tabuleiro
 function slideLeft() {
+  // Percorre cada linha do tabuleiro
   for (let r = 0; r < rows; r++) {
     let row = board[r];
     row = slide(row);
     board[r] = row;
 
+    // Percorre cada coluna para criar os tiles
     for (let c = 0; c < columns; c++) {
       let tile = document.getElementById(r.toString() + "-" + c.toString());
       let num = board[r][c];
+      // Atualiza o tile visualmente com base no valor do número
       updateTile(tile, num);
     }
   }
 }
 
+// Aplica movimento para a direita no tabuleiro
 function slideRight() {
+  // Percorre cada linha do tabuleiro
   for (let r = 0; r < rows; r++) {
     let row = board[r];
     row.reverse();
@@ -161,15 +173,19 @@ function slideRight() {
     row.reverse();
     board[r] = row;
 
+    // Percorre cada coluna para criar os tiles
     for (let c = 0; c < columns; c++) {
       let tile = document.getElementById(r.toString() + "-" + c.toString());
       let num = board[r][c];
+      // Atualiza o tile visualmente com base no valor do número
       updateTile(tile, num);
     }
   }
 }
 
+// Aplica movimento para cima no tabuleiro
 function slideUp() {
+  // Percorre cada coluna do tabuleiro
   for (let c = 0; c < columns; c++) {
     let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
     row = slide(row);
@@ -177,16 +193,20 @@ function slideUp() {
     // board[1][c] = row[1];
     // board[2][c] = row[2];
     // board[3][c] = row[3];
+    // Percorre cada linha do tabuleiro
     for (let r = 0; r < rows; r++) {
       board[r][c] = row[r];
       let tile = document.getElementById(r.toString() + "-" + c.toString());
       let num = board[r][c];
+      // Atualiza o tile visualmente com base no valor do número
       updateTile(tile, num);
     }
   }
 }
 
+// Aplica movimento para baixo no tabuleiro
 function slideDown() {
+  // Percorre cada coluna do tabuleiro
   for (let c = 0; c < columns; c++) {
     let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
     row.reverse();
@@ -196,16 +216,18 @@ function slideDown() {
     // board[1][c] = row[1];
     // board[2][c] = row[2];
     // board[3][c] = row[3];
+    // Percorre cada linha do tabuleiro
     for (let r = 0; r < rows; r++) {
       board[r][c] = row[r];
       let tile = document.getElementById(r.toString() + "-" + c.toString());
       let num = board[r][c];
+      // Atualiza o tile visualmente com base no valor do número
       updateTile(tile, num);
     }
   }
 }
 
-// Alternância de tema claro/escuro
+// Alternância de tema claro/escuro ao clicar no botão
 document.getElementById("toggle-theme").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
