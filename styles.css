@@ -24,17 +24,20 @@ hr {
   /* Garantirá que os blocos ficarão em linha */
   flex-wrap: wrap;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
 }
 
 /* Bloco */
 .tile {
   width: 90px;
-  height: 90px;
+  height: 91px;
   border: 5px solid rgb(163, 163, 163);
 
   font-size: 40px;
   font-weight: bold;
   display: flex;
+
   justify-content: center;
   align-items: center;
 }
